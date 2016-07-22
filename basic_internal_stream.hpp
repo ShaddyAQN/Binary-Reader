@@ -6,6 +6,6 @@ class basic_internal_stream {
 public:
 	virtual ~basic_internal_stream() {}
 
-	virtual byte ReadByte() = 0;
-	virtual std::vector<byte> ReadBytes(const int size) = 0;
+	virtual Byte ReadByte() = 0;
+	virtual std::vector<Byte> ReadBytes(const int size) = 0;
 };

@@ -1,3 +1,3 @@
 #pragma once
 
-using byte = char;
+using Byte = char;

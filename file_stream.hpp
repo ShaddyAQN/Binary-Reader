@@ -8,9 +8,9 @@ public:
 	template<typename... stream_param>
 	explicit file_stream(stream_param... arguments);
 	~file_stream();
-	byte ReadByte() override;
+	Byte ReadByte() override;
 
-	std::vector<byte> ReadBytes(const int size) override;
+	std::vector<Byte> ReadBytes(const int size) override;
 
 private:
 	std::ifstream m_file;

@@ -12,7 +12,7 @@ public:
 	explicit BinaryReader(stream_param... arguments);
 
 	template<typename type>	type read_type();
-	byte read_byte();
+	Byte read_byte();
 	int16_t read_int16();
 	int32_t read_int32();
 	int64_t read_int64();
@@ -20,7 +20,7 @@ public:
 	double_t read_double();
 	int read_Uleb128();
 	std::string read_string();
-	std::vector<byte> read_bytes(const int size);
+	std::vector<Byte> read_bytes(const int size);
 
 private:
 	std::unique_ptr<basic_internal_stream> m_stream;
@@ -35,14 +35,14 @@ template<typename stream_type>
 template<typename type>
 type BinaryReader<stream_type>::read_type()
 {
-	byte buffer[sizeof type];
+	Byte buffer[sizeof type];
 	for (int i = 0; i < sizeof type; ++i)
 		buffer[i] = read_byte();
 	return *reinterpret_cast<type*>(buffer);
 }
 
 template<typename stream_type>
-byte BinaryReader<stream_type>::read_byte()
+Byte BinaryReader<stream_type>::read_byte()
 {
 	return m_stream->ReadByte();
 }
@@ -80,7 +80,7 @@ double_t BinaryReader<stream_type>::read_double()
 template<typename stream_type>
 int BinaryReader<stream_type>::read_Uleb128()
 {
-	byte byte = read_byte();
+	Byte byte = read_byte();
 	int value = byte & 0x7f;
 
 	for(int i = 1; byte > 0x7f; ++i) {
@@ -98,7 +98,7 @@ std::string BinaryReader<stream_type>::read_string()
 	// 0B <length> <char>* = normal string
 	// <length> is encoded as an LEB, and is the byte length of the rest.
 	// <char>* is encoded as UTF8, and is the string content.
-	byte kind = read_byte();
+	Byte kind = read_byte();
 	if(kind == 0x00)
 		return "";
 	else if(kind != 0x0B)
@@ -117,7 +117,7 @@ std::string BinaryReader<stream_type>::read_string()
 }
 
 template<typename stream_type>
-std::vector<byte> BinaryReader<stream_type>::read_bytes(const int size)
+std::vector<Byte> BinaryReader<stream_type>::read_bytes(const int size)
 {
 	return m_stream->ReadBytes(size);
 }
