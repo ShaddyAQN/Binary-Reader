@@ -131,9 +131,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Text Include="ReadMe.txt" />
-  </ItemGroup>
-  <ItemGroup>
     <ClInclude Include="basic_internal_stream.hpp" />
     <ClInclude Include="BinaryReader.hpp" />
     <ClInclude Include="file_stream.hpp" />
