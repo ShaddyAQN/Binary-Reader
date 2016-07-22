@@ -83,7 +83,7 @@ int BinaryReader<stream_type>::read_Uleb128()
 	Byte byte = read_byte();
 	int value = byte & 0x7f;
 
-	for(int i = 1; byte > 0x7f; ++i) {
+	for(int i = 1; byte & 0x80; ++i) {
 		byte = read_byte();
 		value |= (byte & 0x7f) << 7 * i;
 	}
