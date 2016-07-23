@@ -1,6 +1,7 @@
 #include "file_stream.hpp"
 
 
+file_stream::file_stream(): valid{ false } {}
 
 file_stream::~file_stream()
 {

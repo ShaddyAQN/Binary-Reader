@@ -7,6 +7,9 @@ class file_stream : public basic_internal_stream
 public:
 	template<typename... stream_param>
 	explicit file_stream(stream_param... arguments);
+
+	file_stream();
+
 	~file_stream();
 	Byte ReadByte() override;
 
