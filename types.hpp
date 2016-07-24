@@ -1,3 +1,5 @@
 #pragma once
 
-using Byte = char;
+namespace br {
+	using Byte = char;
+}
