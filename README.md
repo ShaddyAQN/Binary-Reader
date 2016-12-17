@@ -16,6 +16,6 @@ The library also allows to easily add support for different types of data like a
 
     int32_t v1 = reader.read_int32();
     int64_t v2 = reader.read_int64();
-    std:.string str = reader.read_string();
+    std::string str = reader.read_string();
     bool b = reader.read_type<bool>();
     
